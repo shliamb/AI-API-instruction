@@ -3,6 +3,7 @@
 
 **Super short:** Examples of accessing the API in the folder - API-python-exemples. Access and key can be obtained in telegram bot - https://t.me/myapi_aibot
 
+**Очень коротко:** Примеры доступа к API в папке - API-python-examples. Доступ и ключ можно получить в telegram-боте - https://t.me/myapi_aibot
 
 
 ## API Requests:

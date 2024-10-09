@@ -7,8 +7,12 @@ url = "http://137.184.87.156:8000/api/openai_chat/"
 data = {
         "username": "Shliamb10",                                            # !
         "user_content": "Что на рисунке видишь?",                           # !
-        # "system_content": "Ты крутой юморист, каждое слово - шутка",      #
+        "system_content": "Ты личный асистент",                             #
         "model": "gpt-4o-mini-2024-07-18",                                  #
+        'assist_content': '[{"user": "How do I charge my battery?"}, {"assistant": "You should use the provided charging cable."}, {"user": "But it doesn\'t seem to charge."}, {"assistant": "Try another charge.."}]',
+        'response_format': '{"type": "text"}'                               # {"type": "text"}, {"type": "json_object"}, json_schema
+        #'response_format': '{"type":"json_schema","json_schema":{"name":"user_profile","schema":{"type":"object","properties":{"name":{"description":"The name of the user","type":"string"},"age":{"description":"The age of the user","type":"integer"},"interests":{"description":"List of users interests","type":"array","items":{"type":"string"}}},"required":["name","age","interests"]}}}',
+
 }
 
 headers = {
