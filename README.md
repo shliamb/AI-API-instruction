@@ -1,4 +1,4 @@
-## API: OpenAI + img, Gemini + img, Dall-e 3, Audio
+## API: OpenAI (ChatGPT) + img, Google (Gemini) + img, Anthropic (Claude)  Dall-e 3, Audio
 
 
 **Super short:** Examples of accessing the API in the folder - API-python-exemples. Access and key can be obtained in telegram bot - https://t.me/myapi_aibot
