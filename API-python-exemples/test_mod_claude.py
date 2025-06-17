@@ -1,18 +1,21 @@
 import requests
-from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY
+from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY, PROXIES
 
 path_file = None
+proxies = None
 
 #path_file = "./uploads/image45.png"
 
 url = f"http://{HOST}/api/claude/"
 
 data = {
-        ACCESS_ID: "08a898f3-e6dd-49c2-93a7-fff0abc7ad31",
-        "user_content": "Что ты видишь?", # !
-        "system_content": "Тебя зовут Ева",
-        "model": "claude-3-haiku-20240307",
-        #'assist_content': '[{"user": "Привет, меня зовут Алекс."}, {"assistant": "Очень приятно Алекс, я Ева."}, {"user": "Мне 40 лет."}, {"assistant": "Ты в самом расвете сил!"}]',
+    "User-Agent": "Mozilla/5.0",
+    "Content-Type": "application/x-www-form-urlencoded",  # или multipart/form-data (если файл)
+    ACCESS_ID: "08a898f3-e6dd-49c2-93a7-fff0abc7ad31",
+    "user_content": "Что ты видишь?", # !
+    "system_content": "Тебя зовут Ева",
+    "model": "claude-3-haiku-20240307",
+    #'assist_content': '[{"user": "Привет, меня зовут Алекс."}, {"assistant": "Очень приятно Алекс, я Ева."}, {"user": "Мне 40 лет."}, {"assistant": "Ты в самом расвете сил!"}]',
 }
 
 headers = {
@@ -22,9 +25,9 @@ headers = {
 if path_file:
     with open(path_file, 'rb') as f:
         file = {'file': ('image45.png', f)}
-        response = requests.post(url, headers=headers, data=data, files=file)
+        response = requests.post(url, headers=headers, data=data, files=file, proxies=PROXIES, timeout=200)
 else:
-    response = requests.post(url, headers=headers, data=data)
+    response = requests.post(url, headers=headers, data=data, proxies=PROXIES, timeout=200)
 
 if response.status_code == 200:
     print(response.json())

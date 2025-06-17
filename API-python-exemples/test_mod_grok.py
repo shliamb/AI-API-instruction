@@ -1,7 +1,8 @@
 import requests
-from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY
+from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY, PROXIES
 
 path_file = None
+proxies = None
 
 #path_file = "./uploads/image45.png"
 
@@ -9,11 +10,13 @@ url = f"http://{HOST}/api/grok/"
 
 
 data = {
-        "access_id": ACCESS_ID,
-        "user_content": "Привет",
-        #'system_content': 'Ты личный асистент в Германии',
-        "model": "grok-2-vision-latest",
-        #'assist_content': '[{"user": "Привет, меня зовут Алекс."}, {"assistant": "Очень приятно Алекс, я Грок."}, {"user": "Мне 40 лет."}, {"assistant": "Ты в самом расвете сил!"}]',
+    "User-Agent": "Mozilla/5.0",
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "access_id": ACCESS_ID,
+    "user_content": "Привет",
+    #'system_content': 'Ты личный асистент в Германии',
+    "model": "grok-2-vision-latest",
+    #'assist_content': '[{"user": "Привет, меня зовут Алекс."}, {"assistant": "Очень приятно Алекс, я Грок."}, {"user": "Мне 40 лет."}, {"assistant": "Ты в самом расвете сил!"}]',
 }
 
 headers = {
@@ -23,9 +26,9 @@ headers = {
 if path_file:
     with open(path_file, 'rb') as f:
         file = {'file': ('image45.png', f)}
-        response = requests.post(url, headers=headers, data=data, files=file)
+        response = requests.post(url, headers=headers, data=data, files=file, proxies=PROXIES, timeout=200)
 else:
-    response = requests.post(url, headers=headers, data=data)
+    response = requests.post(url, headers=headers, data=data, proxies=PROXIES, timeout=200)
 
 
 

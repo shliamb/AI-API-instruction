@@ -1,23 +1,27 @@
 import requests
-from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY
+from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY, PROXIES
 import base64
+
+proxies = None
 
 url = f"http://{HOST}/api/openai-text-to-voice/"
 
 data = {
-        "access_id": ACCESS_ID,
-        "user_content": "А ну-у-у-у-ка! Подика сюда, мальчик.)",
-        "voice": "nova", # alloy, echo, fable, onyx, nova, and shimmer
-        "model": "tts-1", # tts-1 or tts-1-hd
-        "response_format": "wav", # mp3, opus, aac, flac, wav, and pcm
-        "speed": 1.0, # 0.25 to 4.0
+    "User-Agent": "Mozilla/5.0",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "access_id": ACCESS_ID,
+    "user_content": "А ну-у-у-у-ка! Подика сюда, мальчик.)",
+    "voice": "nova", # alloy, echo, fable, onyx, nova, and shimmer
+    "model": "tts-1", # tts-1 or tts-1-hd
+    "response_format": "wav", # mp3, opus, aac, flac, wav, and pcm
+    "speed": 1.0, # 0.25 to 4.0
 }
 
 headers = {
     API_KEY: VALUE_KEY,
 }
 
-response = requests.post(url, headers=headers, data=data)
+response = requests.post(url, headers=headers, data=data, proxies=PROXIES, timeout=200)
 
 format_audio = data["response_format"]
 

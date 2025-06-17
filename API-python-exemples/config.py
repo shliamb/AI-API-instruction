@@ -1,11 +1,13 @@
-HOST = "167.99.210.245:8000"  # Ask here: Telegramm -> @myapi_aibot -> /help -> ask
+HOST = "167.89.210.225:8000"  # Ask here: Telegramm -> @myapi_aibot -> /help -> ask
 
 ACCESS_ID = "ad1b682a-dafa-48ef-9e72-809a1648924e"
 API_KEY = "appkey"
 VALUE_KEY = "bfb89a61-320f-49e9-a08b-f384df4d3bf8"
 
-PROXY = ""
-PASSWORD_PROXY = ""
+# https://free-proxy-list.net/ -> get new proxy
+PROXIES = {
+    "http": "http://8.219.97.248:80"
+}
 
 '''
 
