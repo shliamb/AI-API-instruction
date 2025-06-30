@@ -1,14 +1,14 @@
+# pip install --upgrade requests
+# pip install requests[socks]
 import requests
-from config import HOST, ACCESS_ID, API_KEY, VALUE_KEY, PROXIES
+from keys import HOST, ACCESS_ID, API_KEY, VALUE_KEY, PROXY_HTTP, PROXY_SOCKS5H
+import requests
 import base64
 
-proxies = None
 
 url = f"http://{HOST}/api/openai-text-to-voice/"
 
 data = {
-    "User-Agent": "Mozilla/5.0",
-    "Content-Type": "application/x-www-form-urlencoded",
     "access_id": ACCESS_ID,
     "user_content": "А ну-у-у-у-ка! Подика сюда, мальчик.)",
     "voice": "nova", # alloy, echo, fable, onyx, nova, and shimmer
@@ -19,9 +19,10 @@ data = {
 
 headers = {
     API_KEY: VALUE_KEY,
+    "User-Agent": "Mozilla/5.0"
 }
 
-response = requests.post(url, headers=headers, data=data, proxies=PROXIES, timeout=200)
+response = requests.post(url, headers=headers, data=data, proxies=PROXY_SOCKS5H, timeout=200)
 
 format_audio = data["response_format"]
 
